@@ -29,7 +29,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: deploy_dist
-        path: dist/blog/analog/public
+        path: ./dist/blog/analog/public
 
   deploy: 
     name: Deploy to cloudflare pages
@@ -39,11 +39,12 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: deploy_dist
+          path: ./dist
       - name: Deploy to cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: ./dist/blog/analog/public
+          workingDirectory: ./dist
           command: pages deploy --project-name=angular-systems
         
