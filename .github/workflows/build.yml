@@ -25,11 +25,11 @@ jobs:
     - run: npm ci
     - run: npm run build
     - name: Archive build
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: deploy_dist
-          path: dist/blog/analog/public/assets
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: deploy_dist
+        path: dist/blog/analog/public/assets
 
   deploy: 
     name: Deploy to cloudflare pages
