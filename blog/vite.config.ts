@@ -16,8 +16,8 @@ export default defineConfig(({ mode }) => {
       analog({
         nitro: {
           output: {
-            dir: '../dist/blog/analog/public',
-            serverDir: '../dist/blog/analog/public',
+            dir: '../dist/analog/public',
+            serverDir: '../dist/analog/public',
           },
         },
       }),
