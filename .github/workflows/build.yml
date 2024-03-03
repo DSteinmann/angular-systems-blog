@@ -45,6 +45,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: ./dist
-          command: deploy ./index.mjs --name=angular-systems --no-bundle --site=public --compatibility-date 2024-01-08
+          workingDirectory: ./dist/analog
+          command: deploy ./ --name=angular-systems --no-bundle --site=public --compatibility-date 2024-01-08
         
