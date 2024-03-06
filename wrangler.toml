@@ -11,5 +11,5 @@ rules = [
 ]
 
 [site]
-bucker = "./"
+bucket = "./dist"
 exclude = ["node_modules"]
