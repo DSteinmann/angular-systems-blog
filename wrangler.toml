@@ -7,7 +7,7 @@ compatibility_date = "2024-06-03"
 # route = "<(optional) mainly useful when you want to setup custom domains>"
 
 rules = [
-  { type = "ESModule", globs = ["**/*.js", "**/*.mjs", "!node_modules/**"]},
+  { type = "ESModule", globs = ["**/*.js", "**/*.mjs"]},
 ]
 
 [site]
