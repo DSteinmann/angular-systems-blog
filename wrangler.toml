@@ -1,4 +1,5 @@
 node_compat = true
+no_bundle = true
 name = "angular_systems"
 main = "./index.mjs"
 workers_dev = true
