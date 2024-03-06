@@ -31,6 +31,8 @@ jobs:
           echo "Branch is not main or master. Setting DRY_RUN_OPTION to '--dry-run'."
           echo "DRY_RUN_OPTION=--dry-run" >> $GITHUB_ENV
         fi
+        git config --global user.name "github actions bot"
+        git config --global user.email "username@users.noreply.github.com"
     - run: npm ci
     - run: npm run build
     - name: Deploy Website (gh-pages branch)
