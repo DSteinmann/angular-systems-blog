@@ -29,7 +29,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: deploy_dist
-        path: ./dist/analog/public
+        path: ./dist/blog/analog/public
 
   deploy: 
     name: Deploy to gh pages
@@ -40,8 +40,9 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: deploy_dist
-          path: ./dist
+          path: ./dist/blog/analog/public
       - uses: k9n-dev/analog-publish-gh-pages@v1.0.0
         with:
           access-token: ${{ secrets.GH_SECRET }}
+          deploy-dir: dist/blog/analog/public
         
