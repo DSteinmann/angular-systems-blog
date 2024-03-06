@@ -1,5 +1,5 @@
 compatibility_flags = [ "nodejs_compat" ]
-name = "angular systems"
+name = "angular_systems"
 main = "./index.mjs"
 workers_dev = true
 compatibility_date = "2024-06-03"
