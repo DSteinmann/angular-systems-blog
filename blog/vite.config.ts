@@ -13,14 +13,7 @@ export default defineConfig(({ mode }) => {
       target: ['es2020'],
     },
     plugins: [
-      analog({
-        nitro: {
-          output: {
-            dir: '../dist/analog/public',
-            serverDir: '../dist/analog/public',
-          },
-        },
-      }),
+      analog(),
 
       tsConfigPaths({
         root: '../',
