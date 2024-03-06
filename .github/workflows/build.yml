@@ -3,8 +3,9 @@ name: Angular Systems Workflow
 on:
   push:
     branches:
-      - '*' # deploy on all branches (but a --dry-run flag is added for branches (see code below))
-
+      - '*' # deploy on all branches (but a --dry-run flag is added for branches (see code below)) 
+  pull_request:
+    branches: [ "main" ]
 jobs:
   build:
     name: Build & Test
@@ -17,10 +18,19 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: Set environment variable based on branch
+      run: |
+        if [[ $GITHUB_REF == refs/heads/main || $GITHUB_REF == refs/heads/master ]]; then
+          echo "Branch is main or master. Setting DRY_RUN_OPTION to empty."
+          echo "DRY_RUN_OPTION=" >> $GITHUB_ENV
+        else
+          echo "Branch is not main or master. Setting DRY_RUN_OPTION to '--dry-run'."
+          echo "DRY_RUN_OPTION=--dry-run" >> $GITHUB_ENV
+        fi
     - run: npm ci
     - run: npm run build
     - name: Deploy Website (gh-pages branch)
@@ -29,4 +39,4 @@ jobs:
         CNAME_OPTION: --cname=angular.systems # omit if your not running it on a custom domain
       run: |
         echo "DRY_RUN_OPTION=$DRY_RUN_OPTION"
-        npx angular-cli-ghpages --no-silent --dir="${{env.TARGET_DIR}}" $CNAME_OPTION $DRY_RUN_OPTION
+        npx angular-cli-ghpages --no-silent --dir="./dist/blog/analog/public" $CNAME_OPTION $DRY_RUN_OPTION
