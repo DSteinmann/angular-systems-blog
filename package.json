@@ -44,7 +44,7 @@
     "@nx/angular": "^17.0.0",
     "@nx/cypress": "17.0.0",
     "@nx/devkit": "^17.0.0",
-    "@nx/eslint": "^17.0.0",
+    "@nx/eslint": "^18.3.3",
     "@nx/eslint-plugin": "17.0.0",
     "@nx/jest": "17.2.8",
     "@nx/js": "17.2.8",
